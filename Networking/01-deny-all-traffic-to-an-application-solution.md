@@ -131,7 +131,7 @@ wget: download timed out
 
 ```
 
-## 7. Demo graphic
+## 7. Demo
 
 <p align="center">
   <img width="1304" height="598" src="img/01-deny-all-traffic-to-an-application-solution.png">
