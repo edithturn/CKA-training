@@ -58,7 +58,7 @@ wget -qO- http://10.60.0.231
 Call it **test-02** with no labels. Make this Pod temporary. It will also, request to **frontend** Service.
 
 
-```bash
+```sh
 ~$  kubectl run --rm -i -t --image=alpine test-02 -- sh
 
 # Request to the frontend service with the name of the Service
@@ -102,7 +102,7 @@ networkpolicy.networking.k8s.io/default-deny-ingress created
 We will send a request to **frontend** Service again.
 
 * **Pod test-01** is in the same Namespace of the **frontend** service
-```bash
+```sh
 kubectl run --rm -i -t --image=alpine test-01 -- sh
 
 # Request
