@@ -58,3 +58,15 @@ kubectl config set-context $(kubectl config current-context) --namespace=prod
 
 ```
 
+## Command
+
+k get ns | wc -l
+k get ns -n research
+
+
+
+
+# Resources:
+
+https://github.com/ahmetb/kubernetes-network-policy-recipes
+
