@@ -64,9 +64,122 @@ k get ns | wc -l
 k get ns -n research
 
 
+kubectl get deploments.apps
+kubectl describe deployments.apps simple-webapp-deployment | grep -i image
 
 
 # Resources:
 
 https://github.com/ahmetb/kubernetes-network-policy-recipes
 
+
+
+## Commands
+
+```bash
+kubectl get pod --selector env=dev --no-headers | wc -l
+kubectl get pod --selector bu=finance --no-headers | wc -l
+
+# All Objects
+kubectl get all --selector env=prod
+# Count how many objects
+kubectl get all --selector env=prod --no-headers | wc -l
+
+# identy pod with many labels
+ubectl get all --selector env=prod,bu=finance,tier=frontend
+
+# Check if a nod ehas taints
+kubectl describe node kubemaster | grep -i taints
+
+# Create a taint on node01
+kubectl taint nodes node01 spray=mortain:NoSchedule
+
+# remove a taint from controlplane
+kubectl taint nodes controlplane node-role.kubernetes.io/master:NoSchedule-
+
+# Labels nodes
+kubectl label nodes node-1 size=Large
+
+# sho labels of a node
+kubectl get node --show-labels
+```
+
+## Taints, Tolerations and Node Afinity
+
+## Static Pods
+
+```bash
+# Look for those with -controlplaneappended in the name, They are static pods
+kubectl get pods --all-namespaces
+# get the path of the directory hoding the static defiition files.
+
+ps aux | grep /usr/bin/kubelet
+#Look for --config 
+--config=/var/lib/kubelet/config.yaml
+# Check field for static pods
+grep -i staticpod /var/lib/kubelet/config.yaml
+# Check how many manifest we have
+ls /etc/kubernetes/manifests
+
+
+```
+## Multiple Schedulers
+```bash
+# To see schedules
+kubectl get events
+# Pod name that deploys the default kubernetes scheduler in this environment 
+kubectl get pod --namespace=kube-system
+
+# Get the image of the schedule
+kubectl describe pod kube-scheduler-controlplane --namespace=kube-system
+
+# Deploy an additional scheduler
+
+```
+
+## Metrics
+```bash
+minikube addons enable metrics-server
+git clone https://github/kuberentes-incubator/metrics-server.git
+kubectl create -f deploy/1.8+/
+kubectl top node
+kubectl top pod
+
+kubectl create -f event-simulator
+kubectl logs -f event-simulator-pod
+
+
+```
+
+## Rolloout and versioning
+```bash
+kbuectl rollout status deployment/myapp-deployment
+kubectl rollout undo deployment-deployment 
+#  This will ensure that no new pods are scheduled on this node and the existing pods will not be affected by this operation.
+kubectl cordon node01
+```
+## OS Upgrades
+
+```bash
+kubectl drain node01 --ignore-daemonsets
+kubectl uncordon node01
+```
+
+kubeadm - upgrade
+```bash
+kubeadm upgrade plan
+apt-get upgrade -y kubeadm=1.12.0-00
+kubeadm upgrade apply v1.12.0
+apt-get upgrade -y kubeadm=1.12.0-00
+kubectl restart kubelet
+
+```
+# Topics
+ - static pods
+ - Monitoring on Kubernetes
+    Prometeus
+    Elastic Stack
+    DataDog
+    DynaTrace
+- Rollout and Versioning
+- OS Upgrades
