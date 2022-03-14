@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img width="760" height="320" src="img/intro.png">
+  <img width="750" height="330" src="img/intro.png">
 </p>
 
 This repository contains definitions, tips, sources, and many commands for practice and that I am currently using to prepare for my Certified Kubernetes Administrator exam.
