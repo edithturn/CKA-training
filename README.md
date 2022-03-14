@@ -1,7 +1,29 @@
 
-#       :octopus: **Certified Kubernetes Administrator**  :dolphin:
+#  :octopus: Certified Kubernetes Administrator  (CKA) :dolphin:
+
+
+<p align="center">
+  <img width="780" height="320" src="img/final.png">
+</p>
 
 This repository contains definitions, tips, sources, and many commands for practice and that I am currently using to prepare for my Certified Kubernetes Administrator exam.
+
+## **About the Certified Kubernetes Administrator (CKAD)**
+
+CKAD 2021 Domain, Competencies & Weight
+
+- :paw_prints: [**Cluster Architecture, Installation & Configuration (25 %)**](Cluster-Architecture-Installation-&-Configuration/Cluster-Architecture-Installation-&-Configuration.md)
+- :paw_prints: **Workloads & Scheduling  (15 %)**
+- :paw_prints: **Services & Networking (20 %)**
+- :paw_prints: **Storage (10 %)**
+- :paw_prints: **Troubleshooting  (30 %)**
+
+
+Source [Training Linux Fundation](https://training.linuxfoundation.org/ckad-program-change-2021/)
+
+
+
+
 
 # `` REPOSITORY IN PROGRESS ... `` :carousel_horse: :raising_hand:  :tractor:
 
@@ -172,7 +194,10 @@ apt-get upgrade -y kubeadm=1.12.0-00
 kubeadm upgrade apply v1.12.0
 apt-get upgrade -y kubeadm=1.12.0-00
 kubectl restart kubelet
-
+kubectl get nodes
+kubeadm token list
+kubeadm gt pods -A
+cat /etc/*release*
 ```
 # Topics
  - static pods
